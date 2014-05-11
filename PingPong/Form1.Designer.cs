@@ -47,6 +47,7 @@
             this.pOSYToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sGameOver = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tablero.SuspendLayout();
             this.SuspendLayout();
@@ -165,7 +166,7 @@
             this.sPausa.AutoSize = true;
             this.sPausa.BackColor = System.Drawing.Color.Transparent;
             this.sPausa.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sPausa.Location = new System.Drawing.Point(196, 166);
+            this.sPausa.Location = new System.Drawing.Point(188, 162);
             this.sPausa.Name = "sPausa";
             this.sPausa.Size = new System.Drawing.Size(386, 73);
             this.sPausa.TabIndex = 3;
@@ -240,12 +241,24 @@
             this.hEToolStripMenuItem.Size = new System.Drawing.Size(54, 21);
             this.hEToolStripMenuItem.Text = "Alto: ";
             // 
+            // sGameOver
+            // 
+            this.sGameOver.AutoSize = true;
+            this.sGameOver.BackColor = System.Drawing.Color.Transparent;
+            this.sGameOver.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sGameOver.Location = new System.Drawing.Point(12, 162);
+            this.sGameOver.Name = "sGameOver";
+            this.sGameOver.Size = new System.Drawing.Size(732, 73);
+            this.sGameOver.TabIndex = 7;
+            this.sGameOver.Text = "G A M E    O V E R    </3";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(768, 421);
+            this.Controls.Add(this.sGameOver);
             this.Controls.Add(this.tablero);
             this.Controls.Add(this.sPausa);
             this.Controls.Add(this.menuStrip1);
@@ -283,6 +296,7 @@
         private System.Windows.Forms.ToolStripMenuItem pOSYToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wIToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hEToolStripMenuItem;
+        private System.Windows.Forms.Label sGameOver;
     }
 }
 

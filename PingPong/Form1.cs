@@ -29,6 +29,7 @@ namespace PingPong
             InitializeComponent();
             grafico = CreateGraphics();
             this.sPausa.Visible = false;
+            this.sGameOver.Visible = false;
             
         }
 
@@ -73,9 +74,6 @@ namespace PingPong
 
         public void colicion_pelota()
         {
-
-
-
             if (myPelota.x == 0)
             {
                 myPelota.direccion_X = 1;
@@ -88,31 +86,31 @@ namespace PingPong
             {
                 myPelota.Direcccion_Y = 1;
             }
-            if (myPelota.y > Height - (tablero.Height + 75))
+            if (myPelota.y > Height - (tablero.Height + 70))
             {
                 myPelota.Direcccion_Y = 0;
+                timer1.Enabled = false;
             }
             this.pOSXToolStripMenuItem.Text = "Posicion X: " + myPelota.x;
             this.pOSYToolStripMenuItem.Text = "Posicion Y: " + myPelota.y;
             this.wIToolStripMenuItem.Text   = "Ancho: " + Width;
             this.hEToolStripMenuItem.Text   = "Alto: " + Height;
-
-
-
         }
 
         public void colicion_pelota_tabla()
         {
             if (myTabla.Rectangulo.IntersectsWith(myPelota.Rectangulo))
             {
-                
                 if (myPelota.Direcccion_Y == 0)
+                {
                     myPelota.Direcccion_Y = 1;
+                }
                 if (myPelota.Direcccion_Y == 1)
+                {
                     myPelota.Direcccion_Y = 0;
-
+                }
                 puntos++;
-                this.sPuntos.Text = "" + puntos;
+                this.sPuntos.Text           = "" + puntos;
             }
 
         }
@@ -120,16 +118,25 @@ namespace PingPong
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Right)
+            {
                 myTabla.direccion_X = 1;
+            }
             if (e.KeyCode == Keys.Left)
+            {
                 myTabla.direccion_X = 0;
+            }
             if (e.KeyCode == Keys.Up)
+            {
                 myTabla.direccion_Y = 1;
+            }
             if (e.KeyCode == Keys.Down)
+            {
                 myTabla.direccion_Y = 0;
-
+            }
             if (e.KeyCode == Keys.P)
+            {
                 stop();
+            }
         }
 
         private void stop()
@@ -162,6 +169,7 @@ namespace PingPong
             myPelota.direccion_X = 1;
             timer1.Enabled = true;
             sPausa.Visible = false;
+            sGameOver.Visible = false;
         }
 
         private void nivel1ToolStripMenuItem_Click(object sender, EventArgs e)
