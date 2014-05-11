@@ -19,7 +19,7 @@ namespace PingPong
         };
         Pelota myPelota = new Pelota()
         {
-           x = 50, y = 50, tamano = new Size(15,15), Direcccion_Y = 1, direccion_X = 1, velocidad = 3
+           x = 50, y = 50, tamano = new Size(25,25), Direcccion_Y = 1, direccion_X = 1, velocidad = 10
 
         };
 
@@ -39,8 +39,6 @@ namespace PingPong
             if (myTabla.direccion_X == 0)
                 myTabla.x -= myTabla.velocidad;
 
-            
-
 
         }
 
@@ -54,6 +52,8 @@ namespace PingPong
                 myPelota.y += myPelota.velocidad;
             if (myPelota.Direcccion_Y == 0)
                 myPelota.y -= myPelota.velocidad;
+
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -73,16 +73,32 @@ namespace PingPong
 
         public void colicion_pelota()
         {
-            if (myPelota.x == 0)
-                myPelota.direccion_X = 1;
-            if (myPelota.x == Width - 30)
-                myPelota.direccion_X = 0;
-            if (myPelota.y == 0)
-                myPelota.Direcccion_Y = 1;
-            if (myPelota.y == Height - 50)
-                myPelota.Direcccion_Y = 0;
 
-            
+
+
+            if (myPelota.x == 0)
+            {
+                myPelota.direccion_X = 1;
+            }
+            if (myPelota.x > Width - (tablero.Height))
+            {
+                myPelota.direccion_X = 0;
+            }
+            if (myPelota.y == 0)
+            {
+                myPelota.Direcccion_Y = 1;
+            }
+            if (myPelota.y > Height - (tablero.Height + 75))
+            {
+                myPelota.Direcccion_Y = 0;
+            }
+            this.pOSXToolStripMenuItem.Text = "Posicion X: " + myPelota.x;
+            this.pOSYToolStripMenuItem.Text = "Posicion Y: " + myPelota.y;
+            this.wIToolStripMenuItem.Text   = "Ancho: " + Width;
+            this.hEToolStripMenuItem.Text   = "Alto: " + Height;
+
+
+
         }
 
         public void colicion_pelota_tabla()
