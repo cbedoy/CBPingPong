@@ -6,75 +6,90 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
 namespace PingPong
 {
     public partial class Form1 : Form
     {
-        Graphics grafico;
-        int puntos;
+        private Graphics graphics;
+        private int puntos;
+        private int factor  = 0;
         Tabla myTabla = new Tabla() 
         { 
-            x = 100, y = 350, tamano = new Size (100,25), direccion_X = 1, velocidad = 10
+            //Singleton Model Tabla
+            x               = 100, 
+            y               = 350, 
+            tamano          = new Size (100,25), 
+            direccion_X     = 1, 
+            velocidad       = 10
         };
         Pelota myPelota = new Pelota()
         {
-           x = 50, y = 50, tamano = new Size(25,25), Direcccion_Y = 1, direccion_X = 1, velocidad = 10
-
+            //Singleton Model Tabla
+            x               = 50, 
+            y               = 50, 
+            tamano          = new Size(25,25), 
+            Direcccion_Y    = 1, 
+            direccion_X     = 1, 
+            velocidad       = 10
         };
 
 
         public Form1()
         {
             InitializeComponent();
-            grafico = CreateGraphics();
-            this.sPausa.Visible = false;
-            this.sGameOver.Visible = false;
-            
+            graphics            = CreateGraphics();
+            sPausa.Visible      = false;
+            sGameOver.Visible   = false;
+            timer1.Enabled      = false;
         }
 
         public void movimiento_tabla()
         {
             if (myTabla.direccion_X == 1)
+            {
                 myTabla.x += myTabla.velocidad;
+            }
             if (myTabla.direccion_X == 0)
+            {
                 myTabla.x -= myTabla.velocidad;
-
-
+            }
         }
 
         public void movimiento_pelota()
         {
             if (myPelota.direccion_X == 1)
+            {
                 myPelota.x += myPelota.velocidad;
+            }
             if (myPelota.direccion_X == 0)
+            {
                 myPelota.x -= myPelota.velocidad;
+            }
             if (myPelota.Direcccion_Y == 1)
+            {
                 myPelota.y += myPelota.velocidad;
+            }
             if (myPelota.Direcccion_Y == 0)
+            {
                 myPelota.y -= myPelota.velocidad;
-
-
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            grafico.FillRectangle(Brushes.White, myTabla.Rectangulo);
+            graphics            .FillRectangle(Brushes.White,       myTabla.Rectangulo);
             movimiento_tabla();
-            grafico.FillRectangle(Brushes.YellowGreen, myTabla.Rectangulo);
-            grafico.FillEllipse(Brushes.White, myPelota.Rectangulo);
-            
+            graphics            .FillRectangle(Brushes.YellowGreen, myTabla.Rectangulo);
+            graphics            .FillEllipse(Brushes.White,         myPelota.Rectangulo);
             movimiento_pelota();
             colicion_pelota();
             colicion_pelota_tabla();
-            grafico.FillEllipse(Brushes.Purple, myPelota.Rectangulo);
-
-            
+            graphics            .FillEllipse(Brushes.Purple,        myPelota.Rectangulo);
         }
 
         public void colicion_pelota()
         {
-            if (myPelota.x == 0)
+            if (myPelota.x <=0)
             {
                 myPelota.direccion_X = 1;
             }
@@ -82,7 +97,7 @@ namespace PingPong
             {
                 myPelota.direccion_X = 0;
             }
-            if (myPelota.y == 0)
+            if (myPelota.y < 25)
             {
                 myPelota.Direcccion_Y = 1;
             }
@@ -90,6 +105,8 @@ namespace PingPong
             {
                 myPelota.Direcccion_Y = 0;
                 timer1.Enabled = false;
+                this.sGameOver.Visible = true;
+
             }
             this.pOSXToolStripMenuItem.Text = "Posicion X: " + myPelota.x;
             this.pOSYToolStripMenuItem.Text = "Posicion Y: " + myPelota.y;
@@ -110,7 +127,7 @@ namespace PingPong
                     myPelota.Direcccion_Y = 0;
                 }
                 puntos++;
-                this.sPuntos.Text           = "" + puntos;
+                this.sPuntos.Text           = "" + (puntos * factor);
             }
 
         }
@@ -161,44 +178,54 @@ namespace PingPong
 
         private void reset()
         {
-            myPelota.x = 50;
-            myPelota.y = 50;
-            puntos = 0;
-            sPuntos.Text = "0";
-            myPelota.Direcccion_Y = 1;
-            myPelota.direccion_X = 1;
-            timer1.Enabled = true;
-            sPausa.Visible = false;
-            sGameOver.Visible = false;
+            myPelota.x              = 50;
+            myPelota.y              = 50;
+            puntos                  = 0;
+            sPuntos.Text            = "0";
+            myPelota.Direcccion_Y   = 1;
+            myPelota.direccion_X    = 1;
+            timer1.Enabled          = true;
+            sPausa.Visible          = false;
+            sGameOver.Visible       = false;
         }
 
         private void nivel1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             myPelota.velocidad = 1;
+            factor             = 1;
+            sNivel.Text = "Muy facil";
             reset();
         }
 
         private void nToolStripMenuItem_Click(object sender, EventArgs e)
         {
             myPelota.velocidad = 4;
+            factor             = 3;
+            sNivel.Text = "Intermedio";
             reset();
         }
 
         private void nivel2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             myPelota.velocidad = 2;
+            factor             = 2;
+            sNivel.Text = "Facil";
             reset();
         }
 
         private void nivel4ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             myPelota.velocidad = 8;
+            factor             = 4;
+            sNivel.Text = "Dificil";
             reset();
         }
 
         private void muyDificilToolStripMenuItem_Click(object sender, EventArgs e)
         {
             myPelota.velocidad = 16;
+            factor             = 5;
+            sNivel.Text = "Muy Dificil";
             reset();
         }        
     }
