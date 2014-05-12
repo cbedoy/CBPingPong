@@ -22,6 +22,7 @@ namespace PingPong
 
 
         private IDialogViewDelegate viewDelegate;
+        
         public Dialog()
         {
             InitializeComponent();
@@ -40,26 +41,31 @@ namespace PingPong
         private void button1_Click(object sender, EventArgs e)
         {
             viewDelegate.usuarioSelecciono(Dialog.Tipo.NIVEL_MUY_FACIL);
+            Visible = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             viewDelegate.usuarioSelecciono(Dialog.Tipo.NIVEL_FACIL);
+            Visible = false;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             viewDelegate.usuarioSelecciono(Dialog.Tipo.NIVEL_INTERMEDIO);
+            Visible = false;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             viewDelegate.usuarioSelecciono(Dialog.Tipo.NIVEL_DIFICIL);
+            Visible = false;
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             viewDelegate.usuarioSelecciono(Dialog.Tipo.NIVEL_MUY_DIFICIL);
+            Visible = false;
         }
     }
 }
