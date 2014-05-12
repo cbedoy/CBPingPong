@@ -15,3 +15,4 @@ C:\Users\Carlos\Desktop\Projects\PingPong\PingPong\obj\x86\Debug\PingPong.csproj
 C:\Users\Carlos\Desktop\Projects\PingPong\PingPong\obj\x86\Debug\PingPong.Form1.resources
 C:\Users\Carlos\Desktop\Projects\PingPong\PingPong\obj\x86\Debug\PingPong.Properties.Resources.resources
 C:\Users\Carlos\Desktop\Projects\PingPong\PingPong\obj\x86\Debug\PingPong.csproj.GenerateResource.Cache
+C:\Users\Carlos\Desktop\Projects\PingPong\PingPong\obj\x86\Debug\PingPong.Dialog.resources

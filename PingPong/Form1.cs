@@ -8,11 +8,12 @@ using System.Text;
 using System.Windows.Forms;
 namespace PingPong
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form, IDialogViewDelegate
     {
-        private Graphics graphics;
-        private int puntos;
-        private int factor  = 0;
+        private Graphics    graphics;
+        private int         puntos;
+        private int         factor  = 0;
+        private Dialog      dialog  = null;
         Tabla myTabla = new Tabla() 
         { 
             //Singleton Model Tabla
@@ -41,6 +42,9 @@ namespace PingPong
             sPausa.Visible      = false;
             sGameOver.Visible   = false;
             timer1.Enabled      = false;
+            dialog              = new Dialog();
+            dialog.ViewDelegate = this;
+            dialog.Visible      = true;
         }
 
         public void movimiento_tabla()
@@ -227,6 +231,28 @@ namespace PingPong
             factor             = 5;
             sNivel.Text = "Muy Dificil";
             reset();
-        }        
+        }
+
+        public void usuarioSelecciono(Dialog.Tipo option)
+        {
+            switch (option)
+            {
+                case Dialog.Tipo.NIVEL_MUY_FACIL:
+                    nivel1ToolStripMenuItem_Click(null, null);
+                    break;
+                case Dialog.Tipo.NIVEL_FACIL:
+                    nivel2ToolStripMenuItem_Click(null, null);
+                    break;
+                case Dialog.Tipo.NIVEL_INTERMEDIO:
+                    nToolStripMenuItem_Click(null, null);
+                    break;
+                case Dialog.Tipo.NIVEL_DIFICIL:
+                    nivel4ToolStripMenuItem_Click(null, null);
+                    break;
+                case Dialog.Tipo.NIVEL_MUY_DIFICIL:
+                    muyDificilToolStripMenuItem_Click(null, null);
+                    break;
+            }
+        }
     }
 }

@@ -5,7 +5,8 @@ using System.Text;
 
 namespace PingPong
 {
-    class IDialogViewDelegate
+    public interface IDialogViewDelegate
     {
+        void usuarioSelecciono(Dialog.Tipo option);
     }
 }
