@@ -6,118 +6,181 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
 namespace PingPong
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form, IDialogViewDelegate
     {
-        Graphics grafico;
-        int puntos;
+        //Variables :D
+        private Graphics    graphics;
+        private int         puntos;
+        private int         factor  = 0;
+        private Dialog      dialog  = null;
         Tabla myTabla = new Tabla() 
         { 
-            x = 100, y = 350, tamano = new Size (100,25), direccion_X = 1, velocidad = 10
+            //Singleton Model Tabla
+            x               = 100, 
+            y               = 350, 
+            tamano          = new Size (100,25), 
+            direccion_X     = 1, 
+            velocidad       = 10
         };
         Pelota myPelota = new Pelota()
         {
-           x = 50, y = 50, tamano = new Size(15,15), Direcccion_Y = 1, direccion_X = 1, velocidad = 3
-
+            //Singleton Model Tabla
+            x               = 50, 
+            y               = 50, 
+            tamano          = new Size(25,25), 
+            Direcccion_Y    = 1, 
+            direccion_X     = 1, 
+            velocidad       = 10
         };
 
 
         public Form1()
         {
+            //Instanciacion :D
             InitializeComponent();
-            grafico = CreateGraphics();
-            this.sPausa.Visible = false;
-            
+            graphics            = CreateGraphics();
+            sPausa.Visible      = false;
+            sGameOver.Visible   = false;
+            timer1.Enabled      = false;
+            dialog              = new Dialog();
+            dialog.ViewDelegate = this;
+            dialog.Visible      = true;
         }
 
         public void movimiento_tabla()
         {
+            //Movimiento de la tabla de acuerdo a la velocidad establecidad
             if (myTabla.direccion_X == 1)
+            {
                 myTabla.x += myTabla.velocidad;
+            }
             if (myTabla.direccion_X == 0)
+            {
                 myTabla.x -= myTabla.velocidad;
-
-            
-
-
+            }
         }
 
         public void movimiento_pelota()
         {
+            //Mapeo de direccion de la pelota de acuerdo a la 
+            //Posicion logica
             if (myPelota.direccion_X == 1)
+            {
                 myPelota.x += myPelota.velocidad;
+            }
             if (myPelota.direccion_X == 0)
+            {
                 myPelota.x -= myPelota.velocidad;
+            }
             if (myPelota.Direcccion_Y == 1)
+            {
                 myPelota.y += myPelota.velocidad;
+            }
             if (myPelota.Direcccion_Y == 0)
+            {
                 myPelota.y -= myPelota.velocidad;
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            grafico.FillRectangle(Brushes.White, myTabla.Rectangulo);
+            //Ciclo de pintado
+            //Pintado de la tabla
+            //Movimiento de la tabla
+            //Pintado de la tabla de nuevo
+            //Pintado de la tabla para limpiar 
+            //Movimiento de la pelota
+            //Colicion pelota (Si la hubo)
+            //Colicion pelota con la tabla (Si la hubo)
+            //Pintado de la pelota
+            graphics            .FillRectangle(Brushes.White,       myTabla.Rectangulo);
             movimiento_tabla();
-            grafico.FillRectangle(Brushes.YellowGreen, myTabla.Rectangulo);
-            grafico.FillEllipse(Brushes.White, myPelota.Rectangulo);
-            
+            graphics            .FillRectangle(Brushes.YellowGreen, myTabla.Rectangulo);
+            graphics            .FillEllipse(Brushes.White,         myPelota.Rectangulo);
             movimiento_pelota();
             colicion_pelota();
             colicion_pelota_tabla();
-            grafico.FillEllipse(Brushes.Purple, myPelota.Rectangulo);
-
-            
+            graphics            .FillEllipse(Brushes.Purple,        myPelota.Rectangulo);
         }
 
         public void colicion_pelota()
         {
-            if (myPelota.x == 0)
+            //Colicion de pelota con la pantalla :D
+            if (myPelota.x <=0)
+            {
                 myPelota.direccion_X = 1;
-            if (myPelota.x == Width - 30)
+            }
+            if (myPelota.x > Width - (tablero.Height))
+            {
                 myPelota.direccion_X = 0;
-            if (myPelota.y == 0)
+            }
+            if (myPelota.y < 25)
+            {
                 myPelota.Direcccion_Y = 1;
-            if (myPelota.y == Height - 50)
+            }
+            if (myPelota.y > Height - (tablero.Height + 70))
+            {
                 myPelota.Direcccion_Y = 0;
+                timer1.Enabled = false;
+                this.sGameOver.Visible = true;
 
-            
+            }
+            this.pOSXToolStripMenuItem.Text = "Posicion X: " + myPelota.x;
+            this.pOSYToolStripMenuItem.Text = "Posicion Y: " + myPelota.y;
+            this.wIToolStripMenuItem.Text   = "Ancho: " + Width;
+            this.hEToolStripMenuItem.Text   = "Alto: " + Height;
         }
 
         public void colicion_pelota_tabla()
         {
+            //Colicion de la pelota con la tabla
             if (myTabla.Rectangulo.IntersectsWith(myPelota.Rectangulo))
             {
-                
                 if (myPelota.Direcccion_Y == 0)
+                {
                     myPelota.Direcccion_Y = 1;
+                }
                 if (myPelota.Direcccion_Y == 1)
+                {
                     myPelota.Direcccion_Y = 0;
-
+                }
                 puntos++;
-                this.sPuntos.Text = "" + puntos;
+                this.sPuntos.Text           = "" + (puntos * factor);
             }
 
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
+            //Movimiento tablero :D
             if (e.KeyCode == Keys.Right)
+            {
                 myTabla.direccion_X = 1;
+            }
             if (e.KeyCode == Keys.Left)
+            {
                 myTabla.direccion_X = 0;
+            }
             if (e.KeyCode == Keys.Up)
+            {
                 myTabla.direccion_Y = 1;
+            }
             if (e.KeyCode == Keys.Down)
+            {
                 myTabla.direccion_Y = 0;
-
+            }
             if (e.KeyCode == Keys.P)
+            {
                 stop();
+                dialog.Visible = true;
+            }
         }
 
         private void stop()
         {
+            //Timer pause
             timer1.Enabled = !timer1.Enabled;
             if (!timer1.Enabled)
             {
@@ -127,8 +190,6 @@ namespace PingPong
             {
                 this.sPausa.Visible = false;
             }
-            
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -138,44 +199,80 @@ namespace PingPong
 
         private void reset()
         {
-            myPelota.x = 50;
-            myPelota.y = 50;
-            puntos = 0;
-            sPuntos.Text = "0";
-            myPelota.Direcccion_Y = 1;
-            myPelota.direccion_X = 1;
-            timer1.Enabled = true;
-            sPausa.Visible = false;
+            graphics                .FillEllipse(Brushes.White, myPelota.Rectangulo);
+            myPelota.x              = 50;
+            myPelota.y              = 50;
+            puntos                  = 0;
+            sPuntos.Text            = "0";
+            myPelota.Direcccion_Y   = 1;
+            myPelota.direccion_X    = 1;
+            timer1.Enabled          = true;
+            sPausa.Visible          = false;
+            sGameOver.Visible       = false;
+            myPelota.x              = new Random().Next(50, Width);
         }
 
         private void nivel1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            myPelota.velocidad = 1;
+            myPelota.velocidad  = 1;
+            factor              = 1;
+            sNivel.Text         = "Muy facil";
             reset();
         }
 
         private void nToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            myPelota.velocidad = 4;
+            myPelota.velocidad  = 4;
+            factor              = 3;
+            sNivel.Text         = "Intermedio";
             reset();
         }
 
         private void nivel2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            myPelota.velocidad = 2;
+            myPelota.velocidad  = 2;
+            factor              = 2;
+            sNivel.Text         = "Facil";
             reset();
         }
 
         private void nivel4ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            myPelota.velocidad = 8;
+            myPelota.velocidad  = 8;
+            factor              = 4;
+            sNivel.Text         = "Dificil";
             reset();
         }
 
         private void muyDificilToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            myPelota.velocidad = 16;
+            myPelota.velocidad  = 16;
+            factor              = 5;
+            sNivel.Text         = "Muy Dificil";
             reset();
-        }        
+        }
+
+        public void usuarioSelecciono(Dialog.Tipo option)
+        {
+            //Delegado de comportamiento
+            switch (option)
+            {
+                case Dialog.Tipo.NIVEL_MUY_FACIL:
+                    nivel1ToolStripMenuItem_Click       (null, null);
+                    break;
+                case Dialog.Tipo.NIVEL_FACIL:
+                    nivel2ToolStripMenuItem_Click       (null, null);
+                    break;
+                case Dialog.Tipo.NIVEL_INTERMEDIO:
+                    nToolStripMenuItem_Click            (null, null);
+                    break;
+                case Dialog.Tipo.NIVEL_DIFICIL:
+                    nivel4ToolStripMenuItem_Click       (null, null);
+                    break;
+                case Dialog.Tipo.NIVEL_MUY_DIFICIL:
+                    muyDificilToolStripMenuItem_Click   (null, null);
+                    break;
+            }
+        }
     }
 }
