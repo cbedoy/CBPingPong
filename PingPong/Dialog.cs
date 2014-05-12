@@ -26,6 +26,7 @@ namespace PingPong
         public Dialog()
         {
             InitializeComponent();
+            SetBounds(20, 50, Width, Height);
         }
 
         private void Dialog_Load(object sender, EventArgs e)

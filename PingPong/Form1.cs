@@ -174,6 +174,7 @@ namespace PingPong
             if (e.KeyCode == Keys.P)
             {
                 stop();
+                dialog.Visible = true;
             }
         }
 
@@ -198,6 +199,7 @@ namespace PingPong
 
         private void reset()
         {
+            graphics                .FillEllipse(Brushes.White, myPelota.Rectangulo);
             myPelota.x              = 50;
             myPelota.y              = 50;
             puntos                  = 0;
@@ -207,6 +209,7 @@ namespace PingPong
             timer1.Enabled          = true;
             sPausa.Visible          = false;
             sGameOver.Visible       = false;
+            myPelota.x              = new Random().Next(50, Width);
         }
 
         private void nivel1ToolStripMenuItem_Click(object sender, EventArgs e)

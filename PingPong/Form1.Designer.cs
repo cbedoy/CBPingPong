@@ -37,16 +37,16 @@
             this.nToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nivel4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.muyDificilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pOSXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pOSYToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.sPuntos = new System.Windows.Forms.Label();
             this.sPausa = new System.Windows.Forms.Label();
             this.nivel = new System.Windows.Forms.Label();
             this.sNivel = new System.Windows.Forms.Label();
             this.tablero = new System.Windows.Forms.Panel();
-            this.pOSXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pOSYToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.wIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sGameOver = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tablero.SuspendLayout();
@@ -93,7 +93,7 @@
             this.nivel1ToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nivel1ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.nivel1ToolStripMenuItem.Name = "nivel1ToolStripMenuItem";
-            this.nivel1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nivel1ToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.nivel1ToolStripMenuItem.Text = "Muy facil";
             this.nivel1ToolStripMenuItem.Click += new System.EventHandler(this.nivel1ToolStripMenuItem_Click);
             // 
@@ -103,7 +103,7 @@
             this.nivel2ToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nivel2ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.nivel2ToolStripMenuItem.Name = "nivel2ToolStripMenuItem";
-            this.nivel2ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nivel2ToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.nivel2ToolStripMenuItem.Text = "Facil";
             this.nivel2ToolStripMenuItem.Click += new System.EventHandler(this.nivel2ToolStripMenuItem_Click);
             // 
@@ -113,7 +113,7 @@
             this.nToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.nToolStripMenuItem.Name = "nToolStripMenuItem";
-            this.nToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.nToolStripMenuItem.Text = "Medio";
             this.nToolStripMenuItem.Click += new System.EventHandler(this.nToolStripMenuItem_Click);
             // 
@@ -123,7 +123,7 @@
             this.nivel4ToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nivel4ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.nivel4ToolStripMenuItem.Name = "nivel4ToolStripMenuItem";
-            this.nivel4ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nivel4ToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.nivel4ToolStripMenuItem.Text = "Dificil";
             this.nivel4ToolStripMenuItem.Click += new System.EventHandler(this.nivel4ToolStripMenuItem_Click);
             // 
@@ -133,9 +133,41 @@
             this.muyDificilToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.muyDificilToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.muyDificilToolStripMenuItem.Name = "muyDificilToolStripMenuItem";
-            this.muyDificilToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.muyDificilToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.muyDificilToolStripMenuItem.Text = "Muy dificil";
             this.muyDificilToolStripMenuItem.Click += new System.EventHandler(this.muyDificilToolStripMenuItem_Click);
+            // 
+            // pOSXToolStripMenuItem
+            // 
+            this.pOSXToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pOSXToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.pOSXToolStripMenuItem.Name = "pOSXToolStripMenuItem";
+            this.pOSXToolStripMenuItem.Size = new System.Drawing.Size(89, 21);
+            this.pOSXToolStripMenuItem.Text = "Posicion X:";
+            // 
+            // pOSYToolStripMenuItem
+            // 
+            this.pOSYToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pOSYToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.pOSYToolStripMenuItem.Name = "pOSYToolStripMenuItem";
+            this.pOSYToolStripMenuItem.Size = new System.Drawing.Size(88, 21);
+            this.pOSYToolStripMenuItem.Text = "Posicion Y:";
+            // 
+            // wIToolStripMenuItem
+            // 
+            this.wIToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.wIToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.wIToolStripMenuItem.Name = "wIToolStripMenuItem";
+            this.wIToolStripMenuItem.Size = new System.Drawing.Size(63, 21);
+            this.wIToolStripMenuItem.Text = "Ancho:";
+            // 
+            // hEToolStripMenuItem
+            // 
+            this.hEToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hEToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.hEToolStripMenuItem.Name = "hEToolStripMenuItem";
+            this.hEToolStripMenuItem.Size = new System.Drawing.Size(54, 21);
+            this.hEToolStripMenuItem.Text = "Alto: ";
             // 
             // label1
             // 
@@ -208,38 +240,6 @@
             this.tablero.Name = "tablero";
             this.tablero.Size = new System.Drawing.Size(768, 47);
             this.tablero.TabIndex = 6;
-            // 
-            // pOSXToolStripMenuItem
-            // 
-            this.pOSXToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pOSXToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.pOSXToolStripMenuItem.Name = "pOSXToolStripMenuItem";
-            this.pOSXToolStripMenuItem.Size = new System.Drawing.Size(89, 21);
-            this.pOSXToolStripMenuItem.Text = "Posicion X:";
-            // 
-            // pOSYToolStripMenuItem
-            // 
-            this.pOSYToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pOSYToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.pOSYToolStripMenuItem.Name = "pOSYToolStripMenuItem";
-            this.pOSYToolStripMenuItem.Size = new System.Drawing.Size(88, 21);
-            this.pOSYToolStripMenuItem.Text = "Posicion Y:";
-            // 
-            // wIToolStripMenuItem
-            // 
-            this.wIToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.wIToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.wIToolStripMenuItem.Name = "wIToolStripMenuItem";
-            this.wIToolStripMenuItem.Size = new System.Drawing.Size(63, 21);
-            this.wIToolStripMenuItem.Text = "Ancho:";
-            // 
-            // hEToolStripMenuItem
-            // 
-            this.hEToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hEToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.hEToolStripMenuItem.Name = "hEToolStripMenuItem";
-            this.hEToolStripMenuItem.Size = new System.Drawing.Size(54, 21);
-            this.hEToolStripMenuItem.Text = "Alto: ";
             // 
             // sGameOver
             // 
